@@ -41,7 +41,21 @@ docker images
 - Crear un contenedor con el siguiente comando:
 
 ```
-docker run -p 8010:80 galeanopablo
+docker run -p 80:8010 galeanopablo
 ```
 
 (\*el nombre galeanopablo es de ejemplo, debe colocar el mismo nombre con el que realizó el build)
+
+- En este ejemplo para probar podemos ingresar a:
+
+```
+http://localhost:80
+```
+
+Obtendremos un mensaje de bienvenida
+
+- Si ingresamos a la siguiente url y reemplazamos en sunombre y suapellido por su nombre y apellido, el index.js recibe la query y muestra un mensaje de bienvenida personalizado.
+
+```
+http://localhost:80?firstname=sunombre&lastname=suapellido
+```
