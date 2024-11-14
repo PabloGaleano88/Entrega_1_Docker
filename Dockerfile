@@ -1,26 +1,26 @@
-# Use the official Node image with Alpine
+# Usamos una imagen oficial de Node con Alpine para que pese menos
 FROM node:alpine3.19
 
-# Set up the working directory with appropriate permissions
+# Configuramos el directorio de trabajo con sus respectivos permisos
 RUN mkdir -p /home/node/app && chown -R node:node /home/node/app
 
-# Set the working directory
+# Configuramos el directorio de trabajo
 WORKDIR /home/node/app
 
-# Copy package files and install dependencies as root
+# Copiado de packetjson como root
 COPY package*.json ./
 
-# Install dependencies as root to avoid permission issues
+# Instalamos las dependencias como root para evitar problemas
 RUN npm install
 
-# Copy the rest of the code and set ownership for the node user
+# Copiamos el codigo junto con el resto de los archivos con el usuario node
 COPY --chown=node:node . .
 
-# Switch to the non-root user
+# Cambiamos de usuario a node
 USER node
 
-# Expose the port the app will run on
+# Expose del puerto 8010
 EXPOSE 8010
 
-# Run the app
+# Corremos la aplicación
 CMD [ "node", "index.js" ]
